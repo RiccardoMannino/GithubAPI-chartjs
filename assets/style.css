@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #0d1117;
+  height: 100vh;
+}
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: azure;
+}
+
+label {
+  color: azure;
+  margin-right: 0.7rem;
+}
+
+svg {
+  margin-right: 1rem;
+}
+
+form {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+input:not(:last-of-type) {
+  margin-right: 5px;
+}
+
+.container-fluid {
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+}
+
+.chart-container {
+  position: relative;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
