@@ -3,19 +3,39 @@ const getRepo = async () => {
     .querySelector(".form")
     .addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      const listaCommit = [];
+      const listaIssue = [];
+
       const username = document.querySelector(".testo").value;
       const userUrl = `https://api.github.com/users/${username}/repos`;
       const response = await fetch(userUrl);
       const data = await response.json();
 
-      const nomeRepo = await data.map((repo) => repo.name);
+      let nomeRepo = await data.map((repo) => repo.name);
+      let full = await data.map((repo) => repo.full_name);
       console.log(nomeRepo);
+
       const github = document.querySelector(".github");
       github.href = `https://github.com/${username}`;
       github.setAttribute("target", "_blank");
 
-      const listaCommit = [];
-      const listaIssue = [];
+      data.forEach(async (repos) => {
+        let commitUrl = await fetch(
+          `https://api.github.com/repos/${repos.full_name}/commits`
+        );
+        let commitResponse = await commitUrl.json();
+        listaCommit.push(commitResponse.length);
+        myChart.update();
+      });
+
+      data.forEach(async (repos) => {
+        let issueUrl = await fetch(
+          `https://api.github.com/repos/${repos.full_name}/issues`
+        );
+        let issueResponse = await issueUrl.json();
+        listaIssue.push(issueResponse.length);
+      });
 
       const dati = {
         labels: nomeRepo,
@@ -79,24 +99,6 @@ const getRepo = async () => {
         document.getElementById("myChart").getContext("2d"),
         config
       );
-
-      data.forEach(async (repos) => {
-        let commitUrl = await fetch(
-          `https://api.github.com/repos/${repos.full_name}/commits`
-        );
-        let commitResponse = await commitUrl.json();
-        listaCommit.push(commitResponse.length);
-        myChart.update();
-      });
-
-      data.forEach(async (repos) => {
-        let issueUrl = await fetch(
-          `https://api.github.com/repos/${repos.full_name}/issues`
-        );
-        let issueResponse = await issueUrl.json();
-        listaIssue.push(issueResponse.length);
-        myChart.update();
-      });
     });
 };
 
