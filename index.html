@@ -11,7 +11,12 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+      integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
@@ -38,20 +43,14 @@
             ></path>
           </svg>
         </a>
-        <label id="Ricerca">Ricerca utente:</label>
-        <input class="testo" type="text" id="Ricerca" />
-        <input type="submit" value="Cerca" id="Ricerca" class="submit" />
+        <label>Ricerca utente:</label>
+        <input id="Ricerca" type="text" placeholder="" required />
+        <input id="cerca" type="submit" />
       </form>
       <div class="chart-container">
         <canvas id="myChart"></canvas>
       </div>
     </div>
     <script src="script.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
-      integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
   </body>
 </html>
