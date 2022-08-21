@@ -6,17 +6,17 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: #0d1117;
+  background-color: var(--bs-dark);
   height: 100vh;
 }
 h2 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: azure;
+  color: var(--bs-white);
 }
 
 label {
-  color: azure;
+  color: var(--bs-white);
   margin-right: 0.7rem;
 }
 
@@ -33,11 +33,10 @@ input:not(:last-of-type) {
   margin-right: 5px;
 }
 
-.container-fluid {
+.container {
   align-self: center;
   align-items: center;
   justify-content: center;
-  height: 70%;
 }
 
 .chart-container {

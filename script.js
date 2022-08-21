@@ -3,6 +3,7 @@ const form = document
   .addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    // Placeholder
     let username = document.querySelector("#Ricerca").value;
 
     const userUrl = `https://api.github.com/users/${username}/repos`;
@@ -11,7 +12,7 @@ const form = document
 
     let nomeRepo = await data.map((repo) => repo.name);
 
-    // SVG con link della repository dell'utente ricercato
+    // SVG cliccabile con link github dell'utente ricercato
 
     const github = document.querySelector(".github");
     github.href = `https://github.com/${username}`;
@@ -42,6 +43,8 @@ const form = document
     dati.datasets[1].data = listaIssue;
   });
 
+// Configurazione Chart
+
 const dati = {
   labels: [],
   datasets: [
@@ -60,6 +63,21 @@ const dati = {
       borderWidth: 1,
     },
   ],
+};
+
+// Margine inferiore legend
+
+const legendMargin = {
+  id: "legendMargin",
+  beforeInit(chart) {
+    console.log(chart.legend.fit);
+    const fitValue = chart.legend.fit;
+
+    chart.legend.fit = function fit() {
+      fitValue.bind(chart.legend)();
+      return (this.height += 50);
+    };
+  },
 };
 
 const config = {
@@ -98,6 +116,7 @@ const config = {
       },
     },
   },
+  plugins: [legendMargin],
 };
 const myChart = new Chart(
   document.getElementById("myChart").getContext("2d"),
